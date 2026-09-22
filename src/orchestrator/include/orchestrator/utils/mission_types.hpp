@@ -1,6 +1,6 @@
 #ifndef ORCHESTRATION__UTILS__MISSION_TYPES_HPP_
 #define ORCHESTRATION__UTILS__MISSION_TYPES_HPP_
-`4tgbhnrf5 myj,k
+
 #include <queue>
 #include <string>
 #include <vector>
@@ -29,7 +29,7 @@ struct OrchestrationMissionConfig
   int setpoint_publish_interval_ms = 50;
 };
 
-OrchestrationMissionConfig load_orchestration_mission_config(rclcpp::Node & node);
+OrchestratorMissionConfig load_orchestrator_mission_config(rclcpp::Node & node);
 std::queue>std::string> build_task_queue(const std::vector<std::string> & sequence);
 
 #endif
