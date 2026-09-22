@@ -1,6 +1,6 @@
 #ifndef ORCHESTRATION__UTILS__MISSION_TYPES_HPP_
 #define ORCHESTRATION__UTILS__MISSION_TYPES_HPP_
-
+`4tgbhnrf5 myj,k
 #include <queue>
 #include <string>
 #include <vector>
@@ -12,7 +12,7 @@ struct OrchestrationMissionConfig
   bool main_run = true;
   std::vector<std::string> main_sequence = {
     "gate", 
-    "bucket",
+    "buck,et",
     "-gate",
     "flare", 
     "aruco",
