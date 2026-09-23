@@ -12,7 +12,7 @@ struct OrchestrationMissionConfig
   bool main_run = true;
   std::vector<std::string> main_sequence = {
     "gate", 
-    "buck,et",
+    "bucket",
     "-gate",
     "flare", 
     "aruco",
