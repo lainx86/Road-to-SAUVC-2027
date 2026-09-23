@@ -2,7 +2,7 @@
 
 OrchestratorMissionConfig load_orchestrator_mission_config(rclcpp::Node & node)
 {
-   OrchestratorMissionConfig config;
+  OrchestratorMissionConfig config;
   node.declare_parameter("mission.main_run", config.main_run);
   node.declare_parameter<std::vector<std::string>>("mission.main_sequence", config.main_sequence);
   node.declare_parameter<std::vector<std::string>>("mission.qual_sequence", config.qual_sequence);
@@ -20,4 +20,9 @@ OrchestratorMissionConfig load_orchestrator_mission_config(rclcpp::Node & node)
   node.get_parameter("setup.setpoint_publish_interval_ms", config.setpoint_publish_interval_ms);
 
   return config;
+}
+
+std::queue<std::string> build_task_queue(const std::vector<std::string> & sequence)
+{
+
 }

@@ -30,6 +30,6 @@ struct OrchestrationMissionConfig
 };
 
 OrchestratorMissionConfig load_orchestrator_mission_config(rclcpp::Node & node);
-std::queue>std::string> build_task_queue(const std::vector<std::string> & sequence);
+std::queue<std::string> build_task_queue(const std::vector<std::string> & sequence);
 
 #endif
