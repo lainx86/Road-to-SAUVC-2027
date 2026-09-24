@@ -44,4 +44,27 @@ class Orchestrator : public rclcpp::Node
     rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr ekf_activate_client_;
 
     rclcpp::Service<interfaces::srv::TaskComplete>::SharedPtr task_complete_service_;
-}
+
+    rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr State_sub_;
+    rclcpp::Subscription<interfaces::msg:TaskStatus::SharedPtr task_status_sub_;
+    rclcpp::Publisher<geographic_msg::msg::GeoPoseStamped> SharedPtr setpoint_pub_;
+    rclcpp:TimerBase::SharedPtr init_timer_;
+    
+    void run_task();
+
+    void state_cb(const mavros_msg::msg::State::SharedPtr msg);
+    void task_complete_callback(const std::shared_ptr<interfaces::srv::TaskComplete::Request> request,
+                                std::shared_ptr<interfaces::srv::TaskComplete::Response> response);
+    void task_status_cb(const interfaces::msg::TaskStatus::SharedPtr msg);
+    rclcpp:CallbackGroup::SharedPtr callback_group_logic_;
+
+    void set_target_depth(float double);
+
+    void reset_task_queue();
+
+    bool arm(bool state);
+
+    bool set_mode(const std::string &mode);
+};
+
+#endif
