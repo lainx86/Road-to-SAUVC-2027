@@ -28,7 +28,8 @@ struct OrchestratorMissionConfig
     {
       "Navigation",
       {
-        "pass_gate"
+        "pass_gate",
+        "dodge_flare"
       }
     },
     "Target_Acquisition",
