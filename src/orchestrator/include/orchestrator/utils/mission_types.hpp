@@ -1,35 +1,59 @@
 #ifndef ORCHESTRATOR__UTILS__MISSION_TYPES_HPP_
 #define ORCHESTRATOR__UTILS__MISSION_TYPES_HPP_
 
+#include <vector>
 #include <queue>
 #include <string>
-#include <vector>
 
 #include "rclcpp/rclcpp.hpp"
 
-struct OrchestrationMissionConfig
+struct mission_sequence
 {
-  bool main_run = true;
-  std::vector<std::string> main_sequence = {
-    "gate", 
-    "bucket",
-    "-gate",
-    "flare", 
-    "aruco",
-    "-flare",
-    "-bucket"
-  };
-  std::vector<std::string> qual_sequence = {
-    "qual_gate",
-    "-qual_gate"
-  };
-  double setup_target_depth_m = 0.8;
-  int setup_start_delay_s = 15;
-  int setpoint_publish_count = 5;
-  int setpoint_publish_interval_ms = 50;
+  std::string name;
+  std::vector<std::string> sequence;
 };
 
-OrchestratorMissionConfig load_orchestrator_mission_config(rclcpp::Node & node);
-std::queue<std::string> build_task_queue(const std::vector<std::string> & sequence);
+struct OrchestratorMissionConfig
+{
+  std::vector<Mission> missions = 
+  {
+    {
+      "qualification",
+      {
+        "pass_gate",
+        "turn_around",
+        "pass_gate"
+      }
+    },
+    {
+      "Navigation",
+      {
+        "pass_gate"
+      }
+    },
+    "Target_Acquisition",
+    {
+      "acquire_target",
+      "drop"
+    },
+    {
+      "Target_Reacquisition",
+      {
+        "pass_gate",
+        "pickup_ball"
+      }
+    },
+    {
+      "ComLoc", //Communication and Localization
+      {
+        "localize",
+        "bumpp_the_ball"
+      }
+    }
+  }
+  double setup_target_depth_m = 1.2;
+  int setup_start_delay_s = 15;
+};
+
 
 #endif
