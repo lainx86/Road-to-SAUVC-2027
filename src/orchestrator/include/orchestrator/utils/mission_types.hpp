@@ -15,7 +15,7 @@ struct mission_sequence
 
 struct OrchestratorMissionConfig
 {
-  std::vector<Mission> missions = 
+  std::vector<Mission> missions_sequence = 
   {
     {
       "qualification",
@@ -56,5 +56,7 @@ struct OrchestratorMissionConfig
   int setup_start_delay_s = 15;
 };
 
+OrchestratorMissionConfig orchestrator_load_mission(rclcpp::Node &node); 
+std::queue<std::string> build_task_queue(const std::vector<std::string> & sequence);
 
 #endif
